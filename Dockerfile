@@ -54,6 +54,11 @@ COPY conf/php.ini /etc/php/7.0/fpm/conf.d/40-custom.ini
 
 VOLUME ["/var/www", "/etc/nginx/conf.d"]
 
+# Install composer
+COPY composer/install_composer.sh /tmp/
+RUN /tmp/install_composer.sh
+RUN composer self-update
+
 ################################################################################
 # Ports
 ################################################################################
